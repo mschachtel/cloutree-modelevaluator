@@ -94,6 +94,14 @@ public class RPredictiveModelResult implements PredictiveModelResult {
     public PredictiveModel getPredictiveModel() {
     	return this.model;
     }
-   
 
+	/* (non-Javadoc)
+	 * @see com.cloutree.modelevaluator.PredictiveModelResult#toJSON()
+	 */
+	@Override
+	public String toJSON() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+   
 }

@@ -79,4 +79,11 @@ public interface PredictiveModelResult {
 	 */
     public PredictiveModel getPredictiveModel();
     
+    /**
+     * Writes a JSON-String to be used for interfacing to other applications/services.
+     * 
+     * @return
+     */
+    public String toJSON();
+    
 }

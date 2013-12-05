@@ -4,6 +4,12 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 
 import com.cloutree.modelevaluator.PredictiveModel;
 import com.cloutree.modelevaluator.PredictiveModelResult;
@@ -94,6 +100,44 @@ public class PmmlPredictiveModelResult implements PredictiveModelResult {
     public PredictiveModel getPredictiveModel() {
     	return this.model;
     }
-   
 
+	/* (non-Javadoc)
+	 * @see com.cloutree.modelevaluator.PredictiveModelResult#toJSON()
+	 */
+	@Override
+	public String toJSON() {
+		JsonObjectBuilder builder = Json.createObjectBuilder();
+		
+		JsonArrayBuilder outputBuilder = Json.createArrayBuilder();
+		
+		// Output Values
+		Set<String> outputKeys = this.outputValues.keySet();
+		for(String outputKey : outputKeys) {
+		    Object val = this.outputValues.get(outputKey);
+		    if(val != null) {
+			outputBuilder.add(Json.createObjectBuilder().add(outputKey, val.toString()));
+		    }
+		}
+		builder.add("outputValues", outputBuilder);
+		
+		JsonArrayBuilder predictedBuilder = Json.createArrayBuilder();
+		Set<String> predictedKeys = this.predictedValues.keySet();
+		for(String predictedKey : predictedKeys) {
+		    Object val = this.predictedValues.get(predictedKey);
+		    if(val != null) {
+			predictedBuilder.add(Json.createObjectBuilder().add(predictedKey, val.toString()));
+		    }
+		}
+		builder.add("predictedValues", predictedBuilder);
+		
+		JsonArrayBuilder errorBuilder = Json.createArrayBuilder();
+		for(String error : this.errors) {
+		    errorBuilder.add(error);
+		}
+		builder.add("errors", errorBuilder);
+		
+		JsonObject jsonObject = builder.build();
+		return jsonObject.toString();
+
+	}
 }
