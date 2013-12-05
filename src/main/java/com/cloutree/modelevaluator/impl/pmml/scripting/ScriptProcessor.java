@@ -25,7 +25,7 @@ import java.util.Map;
  */
 
 /**
- * ScriptProcessor
+ * ScriptProcessor 
  *
  * @author marc
  *
@@ -34,6 +34,12 @@ import java.util.Map;
 
 public interface ScriptProcessor {
 
+    /**
+     * Processes a script with given parameters which are directly manipulated.
+     * 
+     * @param script
+     * @param parameters - will be manipulated directly!
+     */
 	public void doScriptProcessing(String script, Map<String, Object> parameters);
     
 }

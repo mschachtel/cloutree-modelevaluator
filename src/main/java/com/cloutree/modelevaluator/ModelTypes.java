@@ -22,7 +22,8 @@ package com.cloutree.modelevaluator;
  */
 
 /**
- * ModelImplementations
+ * Modeltypes define the already implemented libraries for predictive modelling. Currently implemented: <br>
+ * - PMML: Standard PMML exported files (Implementation based on JPMML)
  *
  * @author marc
  *
@@ -32,7 +33,7 @@ package com.cloutree.modelevaluator;
 public enum ModelTypes {
 
     PMML, 
-    NativeR
+//    NativeR
     ;
     
     @Override

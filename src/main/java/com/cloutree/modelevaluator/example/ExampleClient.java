@@ -39,7 +39,7 @@ public class ExampleClient
     {
     	
     	if(args == null || args.length < 2) {
-    		System.out.println("Argument missing, please use as follows: [command] [type (PMML or nativeR)] [absolute model file path] [comma separated parameters (optional)]");
+    		System.out.println("Argument missing, please use as follows: [command] [type (PMML)] [absolute model file path] [comma separated parameters (optional)]");
 			return;
     	}
     	
@@ -51,8 +51,8 @@ public class ExampleClient
     	
     	if(type.equalsIgnoreCase("PMML")) {
     		modelType = ModelTypes.PMML;
-    	} else if(type.equalsIgnoreCase("nativeR")) {
-    		modelType = ModelTypes.NativeR;
+//    	} else if(type.equalsIgnoreCase("nativeR")) {
+//    		modelType = ModelTypes.NativeR;
     	} else {
     		System.out.println("Model Type " + type + "unknown!");
     		return;

@@ -1,11 +1,9 @@
 package com.cloutree.modelevaluator;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.cloutree.modelevaluator.impl.pmml.PmmlPredictiveModel;
-import com.cloutree.modelevaluator.impl.r.RPredictiveModel;
 
 /**
  * Cloutree Modelevaluator
@@ -55,21 +53,20 @@ public class PredictiveModelFactoryTest {
 
 	}
 	
-	@Ignore // Ignored until I got R fixed
-	@Test
-	public void shouldFactoriesRPredictiveModel() {
-		
-		PredictiveModel modelR = null;
-		
-		try {
-			modelR = PredictiveModelFactory.getPredictiveModel(ModelTypes.NativeR);
-		} catch (Exception e) {
-			Assert.assertTrue("Threw exception: " + e.getLocalizedMessage(), false);
-		}
-		
-		Assert.assertTrue(modelR != null);
-		Assert.assertTrue(modelR instanceof RPredictiveModel);
-
-	}
+//	@Test
+//	public void shouldFactoriesRPredictiveModel() {
+//		
+//		PredictiveModel modelR = null;
+//		
+//		try {
+//			modelR = PredictiveModelFactory.getPredictiveModel(ModelTypes.NativeR);
+//		} catch (Exception e) {
+//			Assert.assertTrue("Threw exception: " + e.getLocalizedMessage(), false);
+//		}
+//		
+//		Assert.assertTrue(modelR != null);
+//		Assert.assertTrue(modelR instanceof RPredictiveModel);
+//
+//	}
 	
 }

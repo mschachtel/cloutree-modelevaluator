@@ -26,7 +26,8 @@ import com.cloutree.modelevaluator.exception.InvalidModelException;
  */
 
 /**
- * PredictiveModel
+ * Interface to be used by the API programmer. This represents the model itself and is, together
+ * with {@link PredictiveModelResult} and {@link PredictiveModelFactory}, the most important type for the programmer.
  *
  * @author marc
  *
@@ -35,16 +36,55 @@ import com.cloutree.modelevaluator.exception.InvalidModelException;
 
 public interface PredictiveModel {
 
+	/**
+	 * This method evaluates a model with given parameters.
+	 * 
+	 * @param parameters
+	 * @return {@link PredictiveModelResult}
+	 */
     public PredictiveModelResult eval(Map<String, Object> parameters);
     
+    /**
+     * The predictive model file should usually be set by the {@link PredictiveModelFactory}
+     * 
+     * @param file
+     */
     public void setPredictiveModelFile(PredictiveModelFile file);
     
+    /**
+     * Sometimes a programmer might want to write generic code. To do so it is possible to retrieve the 
+     * parameters required by the model at runtime. <br><br>
+     * 
+     * NOTE: PMML supports this feature while other models might not and would return null
+     * 
+     * @return Map (parameter name to type), null if not supported by model
+     */
     public Map<String, String> getParameterSpecs();
     
+    /**
+     * Should validate a model. 
+     * <br><br>
+     * NOTE: Not supported by PMML yet.
+     * 
+     * @return false if a model is invalid, true if valid
+     * @throws InvalidModelException
+     */
     public boolean validateModel() throws InvalidModelException;
     
+    /**
+     * For pre-processing a JavaScript can be provided to automatically run over the arguments 
+     * before the model gets evaluated.
+     * 
+     * @param script
+     */
     public void setPreProcessor(String script);
     
+    /**
+     * For post-processing a JavaScript can be provided to automatically run over the return values 
+     * after the model-result will be returned.
+     * 
+     * @param script
+     */
     public void setPostProcessor(String script);
     
 }

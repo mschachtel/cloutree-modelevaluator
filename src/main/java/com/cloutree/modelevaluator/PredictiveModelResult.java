@@ -25,7 +25,8 @@ import java.util.Map;
  */
 
 /**
- * PredictiveModelResult
+ * Result interface for any {@link PredictiveModel} returned by eval-method. This wraps all results of any {@link ModelTypes}
+ * in a standardized fashion.
  *
  * @author marc
  *
@@ -34,16 +35,48 @@ import java.util.Map;
 
 public interface PredictiveModelResult {
 
+	/**
+	 * Returns the output values of a model result. Those are not the results of the prediction but optional results.
+	 * 
+	 * @return
+	 */
     public Map<String, ?> getOutputValues();
     
+    /**
+	 * Returns the predicted values of a model result. Those are the main results for any model.
+	 * 
+	 * @return
+	 */
     public Map<String, ?> getPredictedValues();
     
+    /**
+	 * It might happen that a model was not evaluated or the evaluation failed. In this case the result is invalid.
+	 * 
+	 * @return
+	 */
     public boolean isValid();
     
+    /**
+	 * During the evaluation some errors might occur, which are stored in this list. <br><br>
+	 * 
+	 * NOTE: Having errors does not mean the model evaluation failed. This can be checked via isValid.
+	 * 
+	 * @return
+	 */
     public List<String> getErrors();
 
+    /**
+	 * Map of parameter-name to object with the parameters the model was evaluated against.
+	 * 
+	 * @return
+	 */
     public Map<String, Object> getParameters();
     
+    /**
+	 * The {@link PredictiveModel} the result is attached to.
+	 * 
+	 * @return
+	 */
     public PredictiveModel getPredictiveModel();
     
 }

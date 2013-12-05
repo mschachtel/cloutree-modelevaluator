@@ -22,7 +22,7 @@ package com.cloutree.modelevaluator.exception;
  */
 
 /**
- * InvalidModelException
+ * Exception that is thrown as soon as a model isn't valid.
  *
  * @author marc
  *

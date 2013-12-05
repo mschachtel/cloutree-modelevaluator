@@ -30,7 +30,7 @@ import com.cloutree.modelevaluator.PredictiveModelResult;
  */
 
 /**
- * PmmlPredictiveModelResult
+ * {@link PredictiveModelResult} implementation for PMML.
  *
  * @author marc
  *

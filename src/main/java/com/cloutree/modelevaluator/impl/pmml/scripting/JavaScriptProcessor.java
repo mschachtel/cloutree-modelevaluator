@@ -36,7 +36,7 @@ import org.mozilla.javascript.WrapFactory;
  */
 
 /**
- * JavaScriptProcessor
+ * JavaScriptProcessor to process the pre- and post-processing scripts, wrapping org.mozilla.javascript.
  *
  * @author marc
  *
@@ -49,6 +49,10 @@ public class JavaScriptProcessor implements ScriptProcessor {
 	
     private String script;
     
+    /**
+     * Constructor which initializes a local JavaScript context. This is for security reasons to not access any
+     * System or application ressources but only process on parameters and variables. 
+     */
     public JavaScriptProcessor() {
 	
 		if(ContextFactory.getGlobal() == null || ContextFactory.getGlobal() instanceof SandboxContextFactory) {
@@ -57,6 +61,9 @@ public class JavaScriptProcessor implements ScriptProcessor {
 		
     }
     
+    /**
+     * @see ScriptProcessor.doScriptProcessing(String script, Map<String, Object> parameters)
+     */
     public void doScriptProcessing(String script, Map<String, Object> parameters) {
 
 		Map<String, Object> result = new HashMap<String, Object>();;

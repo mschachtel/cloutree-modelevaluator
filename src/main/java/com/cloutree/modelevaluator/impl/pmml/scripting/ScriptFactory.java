@@ -23,7 +23,7 @@ package com.cloutree.modelevaluator.impl.pmml.scripting;
  */
 
 /**
- * ScriptFactory
+ * Factory to create a {@link ScriptProcessor} for a certain Script-Type. Currently only JavaScript is supported.
  *
  * @author marc
  *
@@ -33,19 +33,25 @@ package com.cloutree.modelevaluator.impl.pmml.scripting;
 public class ScriptFactory {
     
     public enum Types {
-	JAVASCRIPT
+    	JAVASCRIPT
     };
     
+    /**
+     * Get a {@link ScriptProcessor} for a certain {@link Types}.
+     * 
+     * @param type
+     * @return
+     */
     public static ScriptProcessor getScriptProcessor(Types type) {
 	
-	ScriptProcessor result = null;
+    	ScriptProcessor result = null;
 	
-	if(type.equals(Types.JAVASCRIPT)) {
-	    
-	    result = new JavaScriptProcessor();
-	}
-	
-	return result;
+		if(type.equals(Types.JAVASCRIPT)) {
+		    
+		    result = new JavaScriptProcessor();
+		}
+		
+		return result;
     }
     
 }

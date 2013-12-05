@@ -40,7 +40,7 @@ import com.cloutree.modelevaluator.impl.pmml.scripting.ScriptProcessor;
  */
 
 /**
- * RPredictiveModel
+ * {@link PredictiveModel} implenentation for Native R.
  * 
  * @author mschachtel
  *

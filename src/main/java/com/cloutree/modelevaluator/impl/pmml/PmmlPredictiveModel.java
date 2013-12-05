@@ -46,7 +46,7 @@ import com.cloutree.modelevaluator.impl.pmml.scripting.ScriptProcessor;
 
 
 /**
- * PmmlPredictiveModel
+ * {@link PredictiveModel} implementation for PMML.
  *
  * @author marc
  *

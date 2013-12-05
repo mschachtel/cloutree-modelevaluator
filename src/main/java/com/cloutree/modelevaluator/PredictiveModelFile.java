@@ -25,7 +25,7 @@ import java.io.File;
  */
 
 /**
- * PredictiveModelFile
+ * Just a Pojo to wrap the predictive model file.
  *
  * @author marc
  *

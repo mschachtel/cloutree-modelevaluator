@@ -1,12 +1,10 @@
 package com.cloutree.modelevaluator;
 
 import java.io.File;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.cloutree.modelevaluator.exception.InvalidModelException;
 import com.cloutree.modelevaluator.impl.pmml.PmmlPredictiveModel;
-import com.cloutree.modelevaluator.impl.r.RPredictiveModel;
 
 /**
  * Cloutree Modelevaluator
@@ -30,7 +28,8 @@ import com.cloutree.modelevaluator.impl.r.RPredictiveModel;
  */
 
 /**
- * PredictiveModelFactory
+ * This is the factory to create a {@link PredictiveModel} for a respective model-type. Please use this as the only way
+ * to instantiate a {@link PredictiveModel}!
  *
  * @author marc
  *
@@ -46,20 +45,31 @@ public class PredictiveModelFactory {
 		if(implementation.equals(ModelTypes.PMML)) {
 			PredictiveModel pmmlModel = new PmmlPredictiveModel();
 		    return pmmlModel;
-		} else if(implementation.equals(ModelTypes.NativeR)) {
-			
-			// TODO Remove as soon as native R is stable
-			log.log(Level.WARNING, "Native R not tested yet!");
-			
-			PredictiveModel rModel = new RPredictiveModel();
-			
-			return rModel;
-		}
+		} 
+		
+		// TODO Activate as soon as native R is stable
+//		else if(implementation.equals(ModelTypes.NativeR)) {
+//			
+//			// TODO Remove as soon as native R is stable
+//			log.log(Level.WARNING, "Native R not tested yet!");
+//			
+//			PredictiveModel rModel = new RPredictiveModel();
+//			
+//			return rModel;
+//		}
 		
 		throw new InvalidModelException();
 	
     }
     
+    /**
+     * Create an instance of {@link PredictiveModel} with given {@link ModelTypes} and a path to the model file.
+     * 
+     * @param implementation
+     * @param filePath
+     * @return
+     * @throws Exception
+     */
     public static PredictiveModel getPredictiveModel(ModelTypes implementation, String filePath) throws Exception {
     	
     	File file = new File(filePath);
@@ -67,6 +77,14 @@ public class PredictiveModelFactory {
     	
     }
     
+    /**
+     * Create an instance of {@link PredictiveModel} with given {@link ModelTypes} and {@link File}.
+     * 
+     * @param implementation
+     * @param filePath
+     * @return
+     * @throws Exception
+     */
     public static PredictiveModel getPredictiveModel(ModelTypes implementation, File file) throws Exception {
 	
 	    PredictiveModel predModel = getPredictiveModel(implementation);
