@@ -7,3 +7,5 @@ An Example of how to use the modelevaluator can be found under com.cloutree.mode
 Currently PMML as an input for predictive models is supported using JPMML. R integration already included but not fully tested yet.
 
 This project is built under the GPL v3 License.
+
+Travis-Build: [![Build Status](https://travis-ci.org/mschachtel/cloutree-modelevaluator.png?branch=master)](https://travis-ci.org/mschachtel/cloutree-modelevaluator)
