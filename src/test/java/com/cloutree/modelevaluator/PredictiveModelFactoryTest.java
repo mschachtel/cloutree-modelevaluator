@@ -38,7 +38,7 @@ import com.cloutree.modelevaluator.impl.pmml.PmmlPredictiveModel;
 public class PredictiveModelFactoryTest {
 
 	@Test
-	public void shouldFactoriesPmmlPredictiveModel() {
+	public void shouldFactorizePmmlPredictiveModel() {
 		
 		PredictiveModel modelPmml = null;
 		

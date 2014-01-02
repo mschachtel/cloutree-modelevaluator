@@ -99,8 +99,8 @@ public class JavaScriptProcessor implements ScriptProcessor {
 	            // Collect the arguments into a single string.
 	            if(parameters != null) {
 	        	    for(String parameter : parameters.keySet()) {
-	        		Object param = Context.javaToJS(parameters.get(parameter), scope);
-	        		ScriptableObject.putProperty(scope, parameter, param);
+		        		Object param = Context.javaToJS(parameters.get(parameter), scope);
+		        		ScriptableObject.putProperty(scope, parameter, param);
 	        	    }
 	            }
 	
@@ -112,9 +112,9 @@ public class JavaScriptProcessor implements ScriptProcessor {
 	            Map<String, Object> resultValues = new HashMap<String, Object>();
 	            
 	            for(String parameter : parameters.keySet()) {
-			Object param = scope.get(parameter, scope);
-			resultValues.put(parameter, param);
-		    }
+					Object param = scope.get(parameter, scope);
+					resultValues.put(parameter, param);
+	            }
 	            
 	            return resultValues;
 	            

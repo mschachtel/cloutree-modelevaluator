@@ -1,6 +1,7 @@
 package com.cloutree.modelevaluator.impl.pmml;
 
 import java.io.File;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.cloutree.modelevaluator.PredictiveModelFile;
+import com.cloutree.modelevaluator.PredictiveModelResult;
 import com.cloutree.modelevaluator.impl.pmml.PmmlPredictiveModel;
 
 /**
@@ -33,7 +35,7 @@ import com.cloutree.modelevaluator.impl.pmml.PmmlPredictiveModel;
 
 
 /**
- * PredictiveModelFactoryTest
+ * PmmlPredictiveModelTest
  *
  * @author marc
  *
@@ -46,10 +48,14 @@ public class PmmlPredictiveModelTest {
 	private String postProcessor = "if(VALUE<'0.5'){ VALUE='0' } else { VALUE='1'}";
 	
 	@Test
-	public void shouldFactorizePmmlPredictiveModel() {
+	public void shouldEvaluateModel() {
 		
 		PmmlPredictiveModel modelPmml = new PmmlPredictiveModel();
-		String path = this.getClass().getResource("/testPMML.xml").getPath();
+		URL url = this.getClass().getResource("/testPMML.xml");
+		
+		Assert.assertNotNull(url);
+		
+		String path = url.getPath();
 		File file = new File(path);
 		
 		Assert.assertTrue(file.exists());
@@ -63,24 +69,11 @@ public class PmmlPredictiveModelTest {
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("NAME", "Mark");
 		
-		modelPmml.eval(parameters);
+		PredictiveModelResult result = modelPmml.eval(parameters);
 
+		Assert.assertNotNull(result);
+		Assert.assertTrue(result.isValid());
+		
 	}
-	
-//	@Test
-//	public void shouldFactoriesRPredictiveModel() {
-//		
-//		PredictiveModel modelR = null;
-//		
-//		try {
-//			modelR = PredictiveModelFactory.getPredictiveModel(ModelTypes.NativeR);
-//		} catch (Exception e) {
-//			Assert.assertTrue("Threw exception: " + e.getLocalizedMessage(), false);
-//		}
-//		
-//		Assert.assertTrue(modelR != null);
-//		Assert.assertTrue(modelR instanceof RPredictiveModel);
-//
-//	}
 	
 }
