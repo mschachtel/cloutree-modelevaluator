@@ -81,9 +81,29 @@ public interface PredictiveModelResult {
     
     /**
      * Writes a JSON-String to be used for interfacing to other applications/services.
-     * 
-     * @return
+     * This method is deprecated sine 1.2, please use {@link #serialize()}
+     *  
+     * @return JSON String
      */
+    @Deprecated
     public String toJSON();
+    
+    /**
+     * Serializes the object into a JSON String, which can be deserialized using {@link #deserialize(String)} on the other side.
+     * Using this JSON-type of serialization enables deserialization outside of java. Class-information can be ignored in this case.
+     *  
+     * @param toJava indicates to include class-information for later deserialization with modelevaluator
+     * @return JSON String
+     */
+    public String serialize(boolean toJava);
+    
+    /**
+     * Deserializes a json string that was generated using {@link #serialize()} before. 
+     *  
+     * @param String version of a {@link PredictiveModelResult}
+     * @return Deserialized {@link PredictiveModelResult}
+     * @throws Exception 
+     */
+    public PredictiveModelResult deserialize(String serialization) throws ClassCastException, Exception;
     
 }

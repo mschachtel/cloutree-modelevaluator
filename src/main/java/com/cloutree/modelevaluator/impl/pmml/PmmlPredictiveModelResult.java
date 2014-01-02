@@ -14,6 +14,9 @@ import javax.json.JsonObjectBuilder;
 import com.cloutree.modelevaluator.PredictiveModel;
 import com.cloutree.modelevaluator.PredictiveModelResult;
 
+import flexjson.JSONDeserializer;
+import flexjson.JSONSerializer;
+
 /**
  * Cloutree Modelevaluator
  * A wrapper for different predictive analysis libraries to be used by Java Apps.
@@ -104,6 +107,7 @@ public class PmmlPredictiveModelResult implements PredictiveModelResult {
 	/* (non-Javadoc)
 	 * @see com.cloutree.modelevaluator.PredictiveModelResult#toJSON()
 	 */
+    @Deprecated
 	@Override
 	public String toJSON() {
 		JsonObjectBuilder builder = Json.createObjectBuilder();
@@ -138,6 +142,28 @@ public class PmmlPredictiveModelResult implements PredictiveModelResult {
 		
 		JsonObject jsonObject = builder.build();
 		return jsonObject.toString();
-
 	}
+
+	/* (non-Javadoc)
+	 * @see com.cloutree.modelevaluator.PredictiveModelResult#serialize()
+	 */
+	@Override
+	public String serialize(boolean toJava) {
+		JSONSerializer serializer = new JSONSerializer();
+		if(!toJava) {
+			serializer.exclude("*.class");
+		}
+		return serializer.deepSerialize(this);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.cloutree.modelevaluator.PredictiveModelResult#deserialize(java.lang.String)
+	 */
+	@Override
+	public PredictiveModelResult deserialize(String serialization) throws ClassCastException, Exception {
+		JSONDeserializer<PmmlPredictiveModelResult> deserializer = new JSONDeserializer<PmmlPredictiveModelResult>();
+		PredictiveModelResult result = (PmmlPredictiveModelResult)deserializer.deserialize(serialization);
+		return result;
+	}
+    
 }

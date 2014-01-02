@@ -99,7 +99,27 @@ public class RPredictiveModelResult implements PredictiveModelResult {
 	 * @see com.cloutree.modelevaluator.PredictiveModelResult#toJSON()
 	 */
 	@Override
+	@Deprecated
 	public String toJSON() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.cloutree.modelevaluator.PredictiveModelResult#serialize()
+	 */
+	@Override
+	public String serialize(boolean toJava) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.cloutree.modelevaluator.PredictiveModelResult#deserialize(java.lang.String)
+	 */
+	@Override
+	public PredictiveModelResult deserialize(String serialization)
+			throws ClassCastException, Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
