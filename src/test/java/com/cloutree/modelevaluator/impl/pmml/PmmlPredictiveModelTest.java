@@ -51,7 +51,7 @@ public class PmmlPredictiveModelTest {
 	public void shouldEvaluateModel() {
 		
 		PmmlPredictiveModel modelPmml = new PmmlPredictiveModel();
-		URL url = this.getClass().getResource("/testPMML.xml");
+		URL url = this.getClass().getResource("testPMML.xml");
 		
 		Assert.assertNotNull(url);
 		
