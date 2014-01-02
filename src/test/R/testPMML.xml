@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<PMML version="4.1" xmlns="http://www.dmg.org/PMML-4_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dmg.org/PMML-4_1 http://www.dmg.org/v4-1/pmml-4-1.xsd">
+ <Header copyright="Copyright (c) 2013 mschachtel" description="Linear Regression Model">
+  <Extension name="user" value="mschachtel" extender="Rattle/PMML"/>
+  <Application name="Rattle/PMML" version="1.4"/>
+  <Timestamp>2013-12-23 15:26:53</Timestamp>
+ </Header>
+ <DataDictionary numberOfFields="2">
+  <DataField name="VALUE" optype="continuous" dataType="double"/>
+  <DataField name="NAME" optype="categorical" dataType="string">
+   <Value value="Marc"/>
+   <Value value="Mark"/>
+  </DataField>
+ </DataDictionary>
+ <RegressionModel modelName="Linear_Regression_Model" functionName="regression" algorithmName="least squares">
+  <MiningSchema>
+   <MiningField name="VALUE" usageType="predicted"/>
+   <MiningField name="NAME" usageType="active"/>
+  </MiningSchema>
+  <Output>
+   <OutputField name="Predicted_VALUE" feature="predictedValue"/>
+  </Output>
+  <RegressionTable intercept="0.75">
+   <CategoricalPredictor name="NAME" value="Marc" coefficient="0"/>
+   <CategoricalPredictor name="NAME" value="Mark" coefficient="-0.75"/>
+  </RegressionTable>
+ </RegressionModel>
+</PMML>

@@ -78,10 +78,8 @@ public class JavaScriptProcessor implements ScriptProcessor {
 		}
 		
 		for(String resultKey : result.keySet()) {
-		    if(parameters.containsKey(resultKey)) {
 			parameters.remove(resultKey);
 			parameters.put(resultKey, result.get(resultKey));
-		    }
 		}
     }
     
