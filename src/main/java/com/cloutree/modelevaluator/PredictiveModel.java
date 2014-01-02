@@ -87,4 +87,18 @@ public interface PredictiveModel {
      */
     public void setPostProcessor(String script);
     
+    /**
+     * Returns the previously provided Script for pre-processing
+     * 
+     * @return script
+     */
+    public String getPreProcessor();
+    
+    /**
+     * Returns the previously provided Script for post-processing
+     * 
+     * @return script
+     */
+    public String getPostProcessor();
+    
 }

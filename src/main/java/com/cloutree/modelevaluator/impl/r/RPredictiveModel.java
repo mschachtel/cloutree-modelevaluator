@@ -15,8 +15,8 @@ import com.cloutree.modelevaluator.PredictiveModelFile;
 import com.cloutree.modelevaluator.PredictiveModelResult;
 import com.cloutree.modelevaluator.exception.InvalidModelException;
 import com.cloutree.modelevaluator.impl.pmml.PmmlPredictiveModel;
-import com.cloutree.modelevaluator.impl.pmml.scripting.ScriptFactory;
-import com.cloutree.modelevaluator.impl.pmml.scripting.ScriptProcessor;
+import com.cloutree.modelevaluator.scripting.ScriptFactory;
+import com.cloutree.modelevaluator.scripting.ScriptProcessor;
 
 /**
  * Cloutree Modelevaluator
@@ -217,6 +217,22 @@ public class RPredictiveModel implements PredictiveModel {
 				log.log(Level.WARNING, "Unsopported R expression/result type " + rResult.getType() + ". Will not add it to predicted values");
 		}
 		
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.cloutree.modelevaluator.PredictiveModel#getPreprocessor()
+	 */
+	@Override
+	public String getPreProcessor() {
+		return this.preProcessor;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.cloutree.modelevaluator.PredictiveModel#getPostProcessor()
+	 */
+	@Override
+	public String getPostProcessor() {
+		return this.postProcessor;
 	}
 
 }

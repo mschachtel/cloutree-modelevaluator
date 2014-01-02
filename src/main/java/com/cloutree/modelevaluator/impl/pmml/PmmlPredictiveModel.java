@@ -20,8 +20,8 @@ import com.cloutree.modelevaluator.PredictiveModel;
 import com.cloutree.modelevaluator.PredictiveModelFile;
 import com.cloutree.modelevaluator.PredictiveModelResult;
 import com.cloutree.modelevaluator.exception.InvalidModelException;
-import com.cloutree.modelevaluator.impl.pmml.scripting.ScriptFactory;
-import com.cloutree.modelevaluator.impl.pmml.scripting.ScriptProcessor;
+import com.cloutree.modelevaluator.scripting.ScriptFactory;
+import com.cloutree.modelevaluator.scripting.ScriptProcessor;
 
 /**
  * Cloutree Modelevaluator
@@ -178,6 +178,22 @@ public class PmmlPredictiveModel implements PredictiveModel {
 
 	public void setPostProcessor(String postProcessor) {
 		this.postProcessor = postProcessor;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.cloutree.modelevaluator.PredictiveModel#getPreprocessor()
+	 */
+	@Override
+	public String getPreProcessor() {
+		return this.preProcessor;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.cloutree.modelevaluator.PredictiveModel#getPostProcessor()
+	 */
+	@Override
+	public String getPostProcessor() {
+		return this.postProcessor;
 	}
     
 }
