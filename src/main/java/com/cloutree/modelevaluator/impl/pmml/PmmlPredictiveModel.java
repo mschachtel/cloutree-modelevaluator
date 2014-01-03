@@ -89,12 +89,12 @@ public class PmmlPredictiveModel implements PredictiveModel {
 			    log.log(Level.WARNING, "No parameter found for: " + dataField.getName());
 			} else {
 			    try {
-				arguments.put(activeField, evaluator.prepare(activeField, value));
+			    	arguments.put(activeField, evaluator.prepare(activeField, value));
 			    } catch (Exception e) {
-				result.addError("Field " + activeField.getValue() + " has invalid value " + value);
-				log.log(Level.SEVERE, e.getMessage());
-				result.setValid(false);
-				return result;
+			    	result.addError("Field " + activeField.getValue() + " has invalid value " + value);
+			    	log.log(Level.SEVERE, e.getMessage());
+			    	result.setValid(false);
+			    	return result;
 			    }
 			}
 	

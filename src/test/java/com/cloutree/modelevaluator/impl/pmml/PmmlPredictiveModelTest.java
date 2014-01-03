@@ -70,8 +70,6 @@ public class PmmlPredictiveModelTest {
 		parameters.put("NAME", "Mark");
 		
 		PredictiveModelResult result = modelPmml.eval(parameters);
-
-		result.serialize(false);
 		
 		Assert.assertNotNull(result);
 		Assert.assertTrue(result.isValid());
